@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Flusso Continuo di Test di Usabilità</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+    }
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Test di Usabilità</h1>
+    <!-- Embed del test corrente -->
+    <iframe id="testFrame" src="https://app.lyssna.com/do/rups0actaiu3/rlrhk1"></iframe>
+    
+    <!-- Pulsante per passare al test successivo -->
+    <button class="button" id="nextTestBtn">Vai al Test Successivo</button>
+  </div>
+
+  <script>
+    // Array dei link dei test in sequenza
+    const tests = [
+      "https://link-del-tuo-primo-test.lyssna.com",
+      "https://link-del-tuo-secondo-test.lyssna.com",
+      "https://link-del-tuo-terzo-test.lyssna.com"
+    ];
+    
+    // Indice del test attualmente visualizzato
+    let currentTest = 0;
+
+    // Funzione per caricare il test successivo nell'iframe
+    document.getElementById("nextTestBtn").addEventListener("click", function() {
+      currentTest++;
+      if (currentTest < tests.length) {
+        document.getElementById("testFrame").src = tests[currentTest];
+      } else {
+        // Se non ci sono più test, mostra un messaggio finale
+        document.querySelector(".container").innerHTML = "<h1>Hai completato tutti i test. Grazie!</h1>";
+      }
+    });
+  </script>
+</body>
+</html>
